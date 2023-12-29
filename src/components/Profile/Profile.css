@@ -1,0 +1,136 @@
+.profile__info {
+  margin: 74px 435px 70px 435px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1200px) {
+  .profile__info {
+    margin: 236px 179px 269px 179px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .profile__info {
+    margin: 70px 30px 40px 30px;
+  }
+}
+
+.profile__title {
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29.05px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.profile__form {
+  padding-top: 123px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__form {
+    padding-top: 96px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .profile__form {
+    padding-top: 80px;
+  }
+}
+
+.profile__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile__item:first-of-type {
+  border-bottom: 1px solid #424242;
+  padding-bottom: 16px;
+}
+
+.profile__item:last-of-type {
+  padding-top: 17px;
+}
+
+.profile__input-title {
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13.31px;
+  margin: 0;
+  padding: 0;
+}
+
+.profile__input {
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  text-align: right;
+  border: none;
+  background-color: transparent;
+}
+
+.profile__button-edit {
+  margin-top: 220px;
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.73px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.profile__button-edit:hover {
+  opacity: 0.5;
+}
+
+.profile__button-exit {
+  margin-top: 16px;
+  color: #EE3465;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15.73px;
+  border: none;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: none;
+  transition: 0.3s linear;
+}
+
+.profile__button-exit:hover {
+  opacity: 5.5;
+}
+
+@media screen and (max-width: 500px) {
+  .profile__button-edit {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+
+  .profile__button-exit {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
