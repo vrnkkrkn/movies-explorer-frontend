@@ -20,7 +20,9 @@ export default function BurgerMenu({ onClick, isOpen, onClose }) {
                 </div>
                 <div className='burger-menu__login'>
                     <Link className="burger-menu__account" to="/profile">Аккаунт</Link>
-                    <Link className="burger-menu__profile" to="/profile" src={profileLogo} alt='Лого профиля'></Link>
+                    <Link to="/profile">
+                        <img className='burger-menu__profile' alt='Лого профиля' src={profileLogo} />
+                    </Link>
                 </div>
                 <button className="burger-menu__close" onClick={onClose} />
             </div>

@@ -47,6 +47,7 @@
   margin: 100px 295px 100px 295px;
   padding: 0;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .techs__element {

@@ -3,28 +3,42 @@
   margin: 18px 70px 18px 70px;
   padding: 0;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1250px) {
+  .navigation {
+    margin: 18px 30px 18px 30px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .navigation {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .navigation {
-    display: block;
-    margin: 18px 30px;
+    margin: 18px 30px 18px 30px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .navigation {
-    margin: 18px 14px;
+    margin: 18px 14px 18px 14px;
   }
 }
 
-.navigation__menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+@media screen and (max-width: 1200px) {
+  .navigation__burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .navigation__routes {
@@ -33,7 +47,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .navigation__routes {
     display: none;
   }
@@ -70,11 +84,6 @@
   margin-left: 757px;
 }
 
-@media screen and (max-width: 1200px) {
-  .navigation__links-profile {
-    margin-left: 300px;
-  }
-}
 
 @media screen and (max-width: 768px) {
   .navigation__links-profile {
@@ -95,7 +104,8 @@
 
 .navigation__profile-logo {
   background: #313131 url('../../images/profileLogo.svg') no-repeat center;
-  width: 26px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50px;
+  background-size: cover;
 }

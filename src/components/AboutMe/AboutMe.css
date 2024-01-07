@@ -66,6 +66,7 @@
   line-height: 17px;
   cursor: pointer;
   margin-top: 99px;
+  text-decoration: none;
 }
 
 .about-me__photo {
@@ -75,6 +76,12 @@
   object-fit: contain;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 1050px) {
+  .about-me__photo {
+    margin-left: 80px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -114,6 +121,7 @@
   .about-me__photo {
     max-width: 255px;
     max-height: 307px;
+    margin: 0;
   }
 }
 

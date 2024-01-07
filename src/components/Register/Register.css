@@ -80,7 +80,8 @@
 }
 
 .register__input:focus {
-  outline: none;
+  outline: 1px solid #4285F4;
+  border-radius: 9px;
   font-weight: 500;
 }
 
@@ -129,7 +130,7 @@
   }
 }
 
-.register__link {
+.register__login-link {
   font-family: 'Inter', Arial, sans-serif;
   color: #4285F4;
   font-weight: 400;
@@ -142,7 +143,7 @@
 
 
 @media screen and (max-width: 600px) {
-  .register__link {
+  .register__login-link {
     font-size: 12px;
     line-height: 14.52px;
     margin-left: 7px;

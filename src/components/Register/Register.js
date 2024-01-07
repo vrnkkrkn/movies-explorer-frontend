@@ -45,7 +45,7 @@ export default function Register() {
           required
         />
         <button type="submit" className="register__button">Зарегистрироваться</button>
-        <p className="register__text">Уже зарегистрированы?<Link to="/signin" className="login__link">Войти</Link></p>
+        <p className="register__text">Уже зарегистрированы?<Link to="/signin" className="register__login-link">Войти</Link></p>
       </form>
     </section >
   )

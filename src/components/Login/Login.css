@@ -80,7 +80,9 @@
 }
 
 .login__input:focus {
-  outline: none;
+  outline: 1px solid #4285F4;
+  border-radius: 9px;
+  font-weight: 500;
   font-weight: 500;
 }
 

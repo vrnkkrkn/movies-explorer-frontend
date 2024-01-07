@@ -28,7 +28,7 @@
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .burger-menu__visible {
         display: block;
         border: none;

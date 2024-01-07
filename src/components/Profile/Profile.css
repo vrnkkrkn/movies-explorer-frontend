@@ -88,6 +88,12 @@
   background-color: transparent;
 }
 
+.profile__input:focus {
+  outline: 1px solid #4285F4;
+  border-radius: 9px;
+  font-weight: 500;
+}
+
 .profile__button-edit {
   margin-top: 220px;
   color: #FFFFFF;

@@ -2,7 +2,12 @@
   margin: 70px 70px 80px 70px;
   display: flex;
   flex-direction: row;
-  border-radius: 9px;
+}
+
+@media screen and (max-width: 1250px) {
+  .search {
+    margin: 70px 30px 80px 30px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -24,6 +29,7 @@
   display: flex;
   flex-direction: row;
   background-color: #2F2F2F;
+  border-radius: 9px 0 0 9px;
 }
 
 .search__image {
@@ -35,7 +41,7 @@
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .search__image {
     display: none;
   }
@@ -67,7 +73,8 @@
 }
 
 .search__input:focus {
-  outline: transparent;
+  outline: 2px solid #4285F4;
+  border-radius: 9px;
 }
 
 .search__input::placeholder {
@@ -92,6 +99,10 @@
   border-right: 1px solid #424242;
 }
 
+.search__button:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 768px) {
   .search__button {
     margin: 19px 50px 19px 50px;
@@ -104,6 +115,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-radius: 0 9px 9px 0;
 }
 
 @media screen and (max-width: 500px) {
@@ -128,7 +140,7 @@
   }
 }
 
-@media screen and (max-width: 500x) {
+@media screen and (max-width: 500px) {
   .search__tumbler {
     margin: 0 16px 0 0;
   }
@@ -139,7 +151,7 @@
 }
 
 .search__checkbox-slider {
-  background-color: #EBEBEB;
+  background-color: #343434;
   border-radius: 20px;
   position: absolute;
   top: 0;
@@ -156,13 +168,14 @@
   position: absolute;
   top: 2px;
   left: 2px;
-  background-color: #F5F5F5;
+  background-color: #2BE080;
   transition: 0.3s;
   border-radius: 50%;
+  border: 1px solid #FFFFFF;
 }
 
 .search__checkbox:checked+.search__checkbox-slider {
-  background-color: #2BE080
+  background-color: #343434;
 }
 
 .search__checkbox:checked+.search__checkbox-slider:before {
@@ -186,7 +199,7 @@
 
 @media screen and (max-width: 500px) {
   .search__checkbox-text {
-    margin-right: 46px 0 27px 46px;
+    margin: 46px 0 27px 46px;
     font-size: 11px;
   }
 }

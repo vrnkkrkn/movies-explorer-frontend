@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-.footer_links {
+.footer__links {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -80,7 +80,7 @@
     margin-top: 30px;
   }
 
-  .footer_links {
+  .footer__links {
     flex-direction: column;
     text-align: center;
     gap: 12px;

@@ -19,7 +19,7 @@ export default function Navigation() {
 
   return (
     <section className='navigation'>
-      <div className='navigation__menu'>
+      <div className='navigation__burger-menu'>
         <Link to="/">
           <img className='navigation__logo' alt='Логотип' src={logo} />
         </Link>
@@ -36,7 +36,9 @@ export default function Navigation() {
         </div>
         <div className='navigation__links-profile'>
           <Link className="navigation__account" to="/profile">Аккаунт</Link>
-          <Link className="navigation__profile-logo" to="/profile" src={profileLogo} alt='Логотип профиля'></Link>
+          <Link to="/profile">
+            <img className='navigation__profile-logo' alt='Логотип профиля' src={profileLogo} />
+          </Link>
         </div>
       </div>
     </section>
