@@ -1,10 +1,13 @@
 import './Header.css';
+import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 
-export default function Header(props) {
+export default function Header({loggedIn}) {
 
   return (
+    <>
+      {!loggedIn ? (
     <header className='header'>
       <Link to="/">
         <img className='header__logo' alt='Логотип' src={logo} />
@@ -14,5 +17,7 @@ export default function Header(props) {
         <Link className="header__login" to='/signin'>Войти</Link>
       </div>
     </header>
+   ) : ( <Navigation />)}
+   </>
   )
 }

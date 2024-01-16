@@ -1,16 +1,30 @@
 import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
+import useFormValidation from '../../hooks/useFormValidation';
 
-export default function Register() {
+export default function Register({onRegister}) {
+
+  const { values, errors, isValidForm, handleChange} = useFormValidation();
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onRegister({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+  });
+  }
+
   return (
     <section className='register'>
       <Link to="/">
         <img className='register__logo' alt='Логотип' src={logo} />
       </Link>
       <h2 className="register__title">Добро пожаловать!</h2>
-      <form className="register__form">
-        <p className="register__name-input">Имя</p>
+      <form className="register__form" onSubmit={handleSubmit}>
+      <label>
+      <p className="register__form-input">Имя</p>
         <input
           id="name"
           name="name"
@@ -19,10 +33,15 @@ export default function Register() {
           className="register__input"
           minLength="2"
           maxLength="30"
-          defaultValue={'Виталий'}
+          value={values.name || ''}
+          onChange={handleChange}
           required
         />
-        <p className="register__name-input">E-mail</p>
+        <span className="register__input-error">{errors.name}</span>
+        </label>
+        <label> 
+          <p className="register__form-input">E-mail</p>
+      
         <input
           id="email"
           name="email"
@@ -30,10 +49,14 @@ export default function Register() {
           className="register__input"
           minLength="2"
           maxLength="30"
-          defaultValue={'pochta@yandex.ru'}
+          value={values.email || ''}
+          onChange={handleChange}
           required
         />
-        <p className="register__name-input">Пароль</p>
+        <span className="register__input-error">{errors.email}</span>
+        </label>
+        <label>
+      <p className="register__form-input">Пароль</p>
         <input
           id="password"
           name="password"
@@ -41,10 +64,13 @@ export default function Register() {
           className="register__input"
           minLength="2"
           maxLength="30"
-          defaultValue={'••••••••••••••'}
+          value={values.password || ''}
+          onChange={handleChange}
           required
         />
-        <button type="submit" className="register__button">Зарегистрироваться</button>
+        <span className="register__input-error">{errors.password}</span>
+        </label>
+        <button type="submit" disabled={!isValidForm ? true : false } className={!isValidForm ? "register__button register__button_inactive" : "register__button"}>Зарегистрироваться</button>
         <p className="register__text">Уже зарегистрированы?<Link to="/signin" className="register__login-link">Войти</Link></p>
       </form>
     </section >
