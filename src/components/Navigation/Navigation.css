@@ -1,0 +1,111 @@
+.navigation {
+  background-color: #202020;
+  margin: 18px 70px 18px 70px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 1250px) {
+  .navigation {
+    margin: 18px 30px 18px 30px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .navigation {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    margin: 18px 30px 18px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navigation {
+    margin: 18px 14px 18px 14px;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .navigation__burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.navigation__routes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .navigation__routes {
+    display: none;
+  }
+}
+
+.navigation__links-movies {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-left: 44px;
+}
+
+.navigation__link-movies {
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navigation__link-movies_active {
+  font-weight: 500;
+}
+
+.navigation__links-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  margin-left: 757px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .navigation__links-profile {
+    display: none;
+  }
+}
+
+.navigation__account {
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation__profile-logo {
+  background: #313131 url('../../images/profileLogo.svg') no-repeat center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background-size: cover;
+}
