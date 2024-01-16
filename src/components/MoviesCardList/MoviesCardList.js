@@ -2,14 +2,13 @@ import './MoviesCardList.css';
 import React, { useEffect, useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
-
+import { baseRowCount, baseRowCountSolo, baseIncRowCount, baseIncRowCountSolo } from '../../utils/constants'
 
 export default function MoviesCardList({ movies, isSavedMovie, savedMovies, loadingFlag, movieNotFound, requestError, handleMovieLike, handleMovieDelete }) {
     const [moviesCount, setMoviesCount] = useState(0);
-    const [rowsCount, setRowsCount] = useState(4);
-    const [rowsCountSolo, setRowsCountSolo] = useState(5);
-    var timeout = false;
-    
+    const [rowsCount, setRowsCount] = useState(baseRowCount);
+    const [rowsCountSolo, setRowsCountSolo] = useState(baseRowCountSolo);
+
     function declareMoviesCount(incRowsCount, incRowsCountSolo) {
         const displayWidth = window.innerWidth;
         setRowsCount(incRowsCount);
@@ -26,22 +25,23 @@ export default function MoviesCardList({ movies, isSavedMovie, savedMovies, load
     }
 
     function loadMoreMovies() {
-        const incRowsCount = rowsCount + 1;
-        const incRowsCountSolo = rowsCountSolo + 2;
+        const incRowsCount = rowsCount + baseIncRowCount;
+        const incRowsCountSolo = rowsCountSolo + baseIncRowCountSolo;
         declareMoviesCount(incRowsCount, incRowsCountSolo);
       }
 
     useEffect(() => {
         declareMoviesCount(rowsCount, rowsCountSolo);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
     useEffect(() => {
-        declareMoviesCount(4, 5);
+        declareMoviesCount(baseRowCount, baseRowCountSolo);
     }, [movies]);
 
     useEffect(() => {
         setTimeout(() => {
-            window.addEventListener('resize', function(){declareMoviesCount(rowsCount, rowsCountSolo)} && clearTimeout(timeout));
+            window.addEventListener('resize', function(){declareMoviesCount(rowsCount, rowsCountSolo)});
         }, 500);
     });
     return (
@@ -52,12 +52,20 @@ export default function MoviesCardList({ movies, isSavedMovie, savedMovies, load
             Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
                 </p>}
             <div className='movies__list'>
-                {movies.slice(0, moviesCount).map((movie) => (
-                    <MoviesCard key={movie.id} movie={movie} 
-                    handleMovieLike={handleMovieLike} handleMovieDelete={handleMovieDelete} 
-                    isSavedMovie={isSavedMovie}
-                    isLikedCard={savedMovies.find((likedMovie) => likedMovie.movieId === movie.id)}/>
-                ))}
+                {isSavedMovie 
+                    ? (<>{movies.map((movie) => (
+                        <MoviesCard key={movie.id} movie={movie} 
+                        handleMovieLike={handleMovieLike} handleMovieDelete={handleMovieDelete} 
+                        isSavedMovie={isSavedMovie}
+                        isLikedCard={savedMovies.find((likedMovie) => likedMovie.movieId === movie.id)}/>
+                    ))}</>)
+                    : (<>{movies.slice(0, moviesCount).map((movie) => (
+                        <MoviesCard key={movie.id} movie={movie} 
+                        handleMovieLike={handleMovieLike} handleMovieDelete={handleMovieDelete} 
+                        isSavedMovie={isSavedMovie}
+                        isLikedCard={savedMovies.find((likedMovie) => likedMovie.movieId === movie.id)}/>
+                    ))}</>)
+                }
             </div>
             {!movieNotFound && !requestError && !isSavedMovie && moviesCount < movies.length && <button className='movies__button' type='button' onClick={loadMoreMovies}>Ещё</button>}
         </section>

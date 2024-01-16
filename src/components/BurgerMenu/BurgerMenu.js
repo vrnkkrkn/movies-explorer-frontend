@@ -1,5 +1,5 @@
 import './BurgerMenu.css'
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import profileLogo from '../../images/profileLogo.svg';
 
 export default function BurgerMenu({ onClick, isOpen, onClose }) {
@@ -14,9 +14,9 @@ export default function BurgerMenu({ onClick, isOpen, onClose }) {
             />
             <div className={burgerMenuContent}>
                 <div className="burger-menu__nav">
-                    <Link className="burger-menu__link" to="/">Главная</Link>
-                    <Link className="burger-menu__link burger-menu__link_underline" to="/movies">Фильмы</Link>
-                    <Link className="burger-menu__link" to="/saved-movies">Сохранённые фильмы</Link>
+                    <NavLink className="burger-menu__link" to="/">Главная</NavLink>
+                    <NavLink className="burger-menu__link burger-menu__link_underline" to="/movies">Фильмы</NavLink>
+                    <NavLink className="burger-menu__link" to="/saved-movies">Сохранённые фильмы</NavLink>
                 </div>
                 <div className='burger-menu__login'>
                     <Link className="burger-menu__account" to="/profile">Аккаунт</Link>

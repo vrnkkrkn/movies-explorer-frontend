@@ -66,6 +66,31 @@
   cursor: pointer;
 }
 
+.movie__element:hover .movie__button_delete {
+  display: flex; 
+}
+
+.movie:hover .movie__button_delete {
+  display: flex; 
+}
+
+.movie__button_delete {
+  display: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.movie__button_delete:hover {
+  opacity: 0.6;
+}
+
 .movie__button:hover {
-  transition: opacity .2s linear;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 600px) {
+  .movie__button_delete {
+    display: flex;
+  }
 }

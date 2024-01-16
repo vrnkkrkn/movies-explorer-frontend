@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
-import useFormValidation from '../../UseFormValidation/UseFormValidation';
+import useFormValidation from '../../hooks/useFormValidation';
+import { emailRegex } from '../../utils/constants'
 
 export default function Login({onLogin}) {
   const { values, errors, isValidForm, handleChange} = useFormValidation();
@@ -28,8 +29,8 @@ export default function Login({onLogin}) {
           name="email"
           placeholder="Email"
           className="login__input"
-          minLength="2"
-          maxLength="30"
+          type="email"
+          pattern={emailRegex}
           value={values.email || ''}
           onChange={handleChange}
           required

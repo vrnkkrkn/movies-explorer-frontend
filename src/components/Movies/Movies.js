@@ -3,7 +3,7 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import moviesApi from '../../utils/MoviesApi';
-
+import { shortMoviesDuration } from '../../utils/constants'
 
 function Movies({handleMovieLike, handleMovieDelete, savedMovies}) {
     const [loadingFlag, setLoadingFlag] = useState(false); //статус прелоадера
@@ -24,7 +24,7 @@ function Movies({handleMovieLike, handleMovieDelete, savedMovies}) {
     }
 
     function filterMoviesByDuration(movies) {
-        return movies.filter((movie) => movie.duration <= 40);
+        return movies.filter((movie) => movie.duration <= shortMoviesDuration);
     }
 
     function filterMovies(movies, searchQuery) {
@@ -89,11 +89,16 @@ function Movies({handleMovieLike, handleMovieDelete, savedMovies}) {
     }, []);
     
     useEffect(() => {
-        if (moviesFiltered.length === 0) {
-            setMovieNotFound(true);
+        if (localStorage.getItem('searchQueryMovies')) {
+            if (moviesFiltered.length === 0) {
+                setMovieNotFound(true);
+            } else {
+                setMovieNotFound(false);
+            } 
         } else {
             setMovieNotFound(false);
-        } 
+        }
+        
     }, [moviesFiltered]);
 
     return (

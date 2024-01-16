@@ -11,18 +11,19 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import Navigation from '../Navigation/Navigation';
+import PopupInfo from '../PopupInfo/PopupInfo';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import mainApi from '../../utils/MainApi';
-
+import { Navigate } from "react-router-dom";
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState(false);
   const [movies, setMovies] = useState([])
+  const [isPopupInfoOpen, setIsPopupInfoOpen] = useState(false)
+  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -46,9 +47,9 @@ function App() {
     mainApi.register(name, email, password)
       .then(() => {
         handleLogin({ email, password })
-        setStatus(true);
       })
       .catch((error) => {
+        setIsPopupInfoOpen(true);
         setStatus(false);
         console.log(error);
       })
@@ -64,6 +65,8 @@ function App() {
         navigate('/movies');
       })
       .catch((error) => {
+        setIsPopupInfoOpen(true);
+        setStatus(false);
         console.log(error);
       });
   }
@@ -99,22 +102,23 @@ function App() {
     } else {
       setLoggedIn(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /** изменение данных юзера */
   function handleUpdateUser({name, email, token}) {
-    setIsLoading(true);
     mainApi.setUserInfo(name, email, token)
       .then((data) => {
         setCurrentUser(data)
+        setIsPopupInfoOpen(true);
         setStatus(true);
       })
       .catch((error) => {
-        setStatus(false);
         console.log(error)
+        setIsPopupInfoOpen(true);
+        setStatus(false);
       })
       .finally(() => {
-        setIsLoading(false)
       });
   }
 
@@ -128,6 +132,10 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  function closePopup() {
+    setIsPopupInfoOpen(false)
   }
   
   function handleMovieLike(movie) {
@@ -147,8 +155,17 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <Routes>
-          <Route path='/signup' element={<Register onRegister={handleRegister} />} />
-          <Route path='/signin' element={<Login onLogin={handleLogin} />} />
+          {!loggedIn ? (
+            <Route path='/signup' element={<Register onRegister={handleRegister} />} />
+          ) : (
+            <Route path='/signup' element={<Navigate to="/" replace />} />
+          )}
+
+          {!loggedIn ? (
+            <Route path='/signin' element={<Login onLogin={handleLogin} />} />
+          ) : (
+            <Route path='/signin' element={<Navigate to="/" replace />} />
+          )}
           <Route path={'/profile'} element={
             <ProtectedRoute
               loggedIn={loggedIn}>
@@ -191,6 +208,13 @@ function App() {
           </Route>
           <Route exact path='*' element={< InfoTooltip />} />
         </Routes>
+
+        <PopupInfo
+          isOpen={isPopupInfoOpen}
+          onClose={closePopup}
+          status={status}
+        />
+
       </div>
     </CurrentUserContext.Provider>
   );

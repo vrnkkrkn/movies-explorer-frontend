@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
-import useFormValidation from '../../UseFormValidation/UseFormValidation';
+import useFormValidation from '../../hooks/useFormValidation';
+import { emailRegex } from '../../utils/constants'
 
 export default function Register({onRegister}) {
 
   const { values, errors, isValidForm, handleChange} = useFormValidation();
-  const EMAIL_REGEX =
-  "^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$";
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -49,9 +48,8 @@ export default function Register({onRegister}) {
           name="email"
           placeholder="Email"
           className="register__input"
-          minLength="2"
-          maxLength="30"
-          pattern={EMAIL_REGEX}
+          type="email"
+          pattern={emailRegex}
           value={values.email || ''}
           onChange={handleChange}
           required
@@ -65,6 +63,7 @@ export default function Register({onRegister}) {
           name="password"
           placeholder="Пароль"
           className="register__input"
+          type="password"
           minLength="2"
           maxLength="30"
           value={values.password || ''}

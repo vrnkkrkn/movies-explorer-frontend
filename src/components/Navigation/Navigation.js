@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './Navigation.css'
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import logo from '../../images/logo.svg';
@@ -31,8 +31,8 @@ export default function Navigation() {
       </div>
       <div className='navigation__routes'>
         <div className='navigation__links-movies'>
-          <Link className='navigation__link-movies navigation__link-movies_active' to='/movies'>Фильмы</Link>
-          <Link className='navigation__link-movies' to='/saved-movies'>Сохранённые фильмы</Link>
+          <NavLink className='navigation__link-movies navigation__link-movies_active' to='/movies'>Фильмы</NavLink>
+          <NavLink className='navigation__link-movies' to='/saved-movies'>Сохранённые фильмы</NavLink>
         </div>
         <div className='navigation__links-profile'>
           <Link className="navigation__account" to="/profile">Аккаунт</Link>

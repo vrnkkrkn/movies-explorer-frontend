@@ -53,15 +53,17 @@
 }
 
 .page-notfound__link {
-  color: #4285F4;
+  color: #ffffff;
   font-family: 'Inter', Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
+  border: 0;
   line-height: 16.94px;
   margin-top: 184px;
   padding: 0;
   text-decoration: none;
   cursor: pointer;
+  background-color: transparent;
   transition: opacity .2s linear;
 }
 

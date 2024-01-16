@@ -1,5 +1,4 @@
 import './MoviesCard.css';
-import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import deleteFilmButton from '../../images/deleteFilmButton.svg';
 import saveFilmButton from '../../images/saveFilmButton.svg';
@@ -42,12 +41,12 @@ export default function MoviesCard({ movie, isSavedMovie, handleMovieLike, isLik
       <div className='movie__element'>
         <h2 className='movie__title'>{movie.nameRU}</h2>
         {location.pathname === '/movies' &&
-          <button type='button' className={isLikedCard ? 'movie__button' : 'movie__button'} onClick={handleClick}>
+          <button type='button' className='movie__button' onClick={handleClick}>
             {isLikedCard ? <img className='movie__click' alt='Фильм сохранён' src={saveFilmButton} /> :
               <img className='movie__button-dislike' alt='Убрать лайк' src={dislikeFilmButton} />}
           </button>}
         {location.pathname === '/saved-movies' &&
-          <button type='button' className='movie__button' onClick={deleteLikedMovie}>
+          <button type='button' className='movie__button_delete' onClick={deleteLikedMovie}>
             <img className='movie__button-delete' alt='Удалить фильм' src={deleteFilmButton} />
           </button>}
       </div>

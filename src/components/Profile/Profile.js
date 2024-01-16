@@ -1,22 +1,30 @@
 import './Profile.css'
 import { Link } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-import { useContext, useEffect} from 'react';
-import useFormValidation from '../../UseFormValidation/UseFormValidation';
-
+import { useContext, useEffect, useState } from 'react';
+import useFormValidation from '../../hooks/useFormValidation';
+import { emailRegex } from '../../utils/constants'
 
 export default function Profile({ onUpdateUser, signOut }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, errors, handleChange, isValidForm, resetForm,} = useFormValidation();
-   
-    // После загрузки текущего пользователя из API
-    // его данные будут использованы в управляемых компонентах.
-    useEffect(() => {
-      resetForm({ 
-        name: currentUser.name, 
-        email: currentUser.email })
-    }, [resetForm, currentUser])
+  const [isChangedValue, setIsChangedValue] = useState(false);
+  // После загрузки текущего пользователя из API
+  // его данные будут использованы в управляемых компонентах.
+  useEffect(() => {
+    resetForm({ 
+      name: currentUser.name, 
+      email: currentUser.email })
+  }, [resetForm, currentUser])
   
+  useEffect(() => {
+    if (currentUser.name === values.name && currentUser.email === values.email) {
+      setIsChangedValue(true);
+    } else {
+      setIsChangedValue(false);
+    }
+  }, [values])
+
   function handleSubmit(evt) {
     // Запрещаем браузеру переходить по адресу формы
     evt.preventDefault();
@@ -50,15 +58,16 @@ export default function Profile({ onUpdateUser, signOut }) {
             <p className='profile__input-title'>E-mail</p>
             <input className='profile__input'
               type='email'
+              pattern={emailRegex}
               name='email'
               id='email'
               placeholder='E-mail'
               value={values.email || ''}
                 onChange={handleChange}
               required />
-              <span className="profile__input-error">{errors.name}</span>
+              <span className="profile__input-error">{errors.email}</span>
           </div>
-          <button  type='submit' disabled={!isValidForm ? true : false } className={!isValidForm ? "profile__button-edit profile__button-edit_inactive" : "profile__button-edit"}>Редактировать</button>
+          <button  type='submit' disabled={!isValidForm || isChangedValue ? true : false } className={!isValidForm || isChangedValue ? "profile__button-edit profile__button-edit_inactive" : "profile__button-edit"}>Редактировать</button>
         </form>
         <Link className='profile__button-exit' to='/' onClick={signOut}>Выйти из аккаунта</Link>
       </div>
