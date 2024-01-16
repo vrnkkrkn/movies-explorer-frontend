@@ -20,6 +20,8 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState(false);
   const [movies, setMovies] = useState([])
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,8 +46,10 @@ function App() {
     mainApi.register(name, email, password)
       .then(() => {
         handleLogin({ email, password })
+        setStatus(true);
       })
       .catch((error) => {
+        setStatus(false);
         console.log(error);
       })
   }
@@ -95,19 +99,22 @@ function App() {
     } else {
       setLoggedIn(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /** изменение данных юзера */
   function handleUpdateUser({name, email, token}) {
+    setIsLoading(true);
     mainApi.setUserInfo(name, email, token)
       .then((data) => {
         setCurrentUser(data)
+        setStatus(true);
       })
       .catch((error) => {
+        setStatus(false);
         console.log(error)
       })
       .finally(() => {
+        setIsLoading(false)
       });
   }
 

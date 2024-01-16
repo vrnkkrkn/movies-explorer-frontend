@@ -33,7 +33,6 @@ export default function MoviesCardList({ movies, isSavedMovie, savedMovies, load
 
     useEffect(() => {
         declareMoviesCount(rowsCount, rowsCountSolo);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
     useEffect(() => {

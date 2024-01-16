@@ -24,7 +24,6 @@ function SearchForm({movieSearch, handleCheckbox, shortMovies}) {
         if (location.pathname === '/movies') {
             setSearchQuery(localStorage.getItem('searchQuery'));
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

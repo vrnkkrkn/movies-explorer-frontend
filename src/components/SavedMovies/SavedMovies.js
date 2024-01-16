@@ -41,7 +41,6 @@ export default function SavedMovies({movies, handleMovieDelete, handleMovieLike}
 
     useEffect(() => {
         filterMovies(movies, searchQuerySaved);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [movies, shortMovies, searchQuerySaved]);
 
     useEffect(() => {

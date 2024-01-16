@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
-import useFormValidation from '../../hooks/useFormValidation';
+import useFormValidation from '../../UseFormValidation/UseFormValidation';
 
 export default function Login({onLogin}) {
   const { values, errors, isValidForm, handleChange} = useFormValidation();
@@ -41,6 +41,7 @@ export default function Login({onLogin}) {
         <input
           id="password"
           name="password"
+          type="password"
           placeholder="Пароль"
           className="login__input"
           minLength="2"

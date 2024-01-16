@@ -1,4 +1,5 @@
 import './MoviesCard.css';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import deleteFilmButton from '../../images/deleteFilmButton.svg';
 import saveFilmButton from '../../images/saveFilmButton.svg';

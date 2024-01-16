@@ -62,9 +62,9 @@ function Movies({handleMovieLike, handleMovieDelete, savedMovies}) {
     function handleCheckbox() {
         const movies = JSON.parse(localStorage.getItem('searchQueryMovies'));
         setShortMovies(!shortMovies);
+        localStorage.setItem('shortMovies', !shortMovies);
         if (localStorage.getItem('searchQuery')) {
             setMoviesFiltered(!shortMovies ? filterMoviesByDuration(movies) : movies);
-            localStorage.setItem('shortMovies', shortMovies);
         }
         
     }

@@ -28,7 +28,9 @@ function useFormValidation() {
         handleChange,
         errors,
         isValidForm,
-        resetForm
+        setIsValidForm,
+        resetForm,
+        setValues
     };
 }
 

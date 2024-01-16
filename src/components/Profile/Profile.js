@@ -2,7 +2,7 @@ import './Profile.css'
 import { Link } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext, useEffect} from 'react';
-import useFormValidation from '../../hooks/useFormValidation';
+import useFormValidation from '../../UseFormValidation/UseFormValidation';
 
 
 export default function Profile({ onUpdateUser, signOut }) {
